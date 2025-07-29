@@ -56,9 +56,10 @@ void networkListener(int port)
         int selectResult = select(sock + 1, &fds, nullptr, nullptr, &timeout);
 
         if (selectResult > 0) {
-            char buffer[sizeof(Line) + 1];
-            int received = recvfrom(sock, buffer, sizeof(buffer), 0,
-                (struct sockaddr*)&clientAddr, &addrLen);
+            socklen_t addrLen = sizeof(clientAddr);
+	    char buffer[sizeof(Line) + 1];
+	    int received = recvfrom(sock, buffer, sizeof(buffer), 0,
+		    (struct sockaddr*)&clientAddr, &addrLen);
 
             if (received >= 1) {
                 std::cout << "RECIVED\n";

@@ -5,7 +5,6 @@
 
 #include "ChadNet.h"
 
-#include <Windows.h>
 #include <unordered_set>
 
 struct Vertex 
